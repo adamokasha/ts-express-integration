@@ -6,23 +6,6 @@ interface RequestWithBody extends Request {
 
 const router = Router();
 
-router.get("/login", (req: Request, res: Response) => {
-  res.send(`
-    <form method="POST">
-      <div>
-        <label>Email</lable>
-        <input name="email"/>
-      </div>
-
-      <div>
-        <label>Password</lable>
-        <input name="password" type="password"/>
-      </div>
-        <button>Submit</button>
-    </form>  
-  `);
-});
-
 router.post("/login", (req: RequestWithBody, res: Response) => {
   const { email, password } = req.body;
 
@@ -57,6 +40,11 @@ router.get("/", (req: Request, res: Response) => {
     </div>
     `);
   }
+});
+
+router.get("/logout", (req: Request, res: Response) => {
+  req.session = undefined;
+  res.redirect("/");
 });
 
 export { router };
