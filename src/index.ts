@@ -1,5 +1,6 @@
 import express, { Request, Response } from "express";
 import bodyParser from "body-parser";
+import cookieSession from "cookie-session";
 
 import { router } from "./routes/loginRoutes";
 
@@ -10,6 +11,7 @@ app.use(
     extended: true
   })
 );
+app.use(cookieSession({ keys: ["sdkfosdjfo"] }));
 app.use(router);
 
 app.listen(3000, () => {
