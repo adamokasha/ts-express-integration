@@ -3,9 +3,8 @@ import bodyParser from "body-parser";
 import cookieSession from "cookie-session";
 
 import { AppRouter } from "./AppRouter";
+import "./controllers/RootController";
 import "./controllers/LoginController";
-
-import { router } from "./routes/loginRoutes";
 
 const app = express();
 
@@ -15,7 +14,6 @@ app.use(
   })
 );
 app.use(cookieSession({ keys: ["sdkfosdjfo"] }));
-app.use(router);
 app.use(AppRouter.getInstance());
 
 app.listen(3030, () => {

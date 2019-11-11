@@ -14,7 +14,7 @@ export class LoginController {
     <form method="POST">
       <div>
         <label>Email</lable>
-        <input name="emil"/>
+        <input name="email"/>
       </div>
 
       <div>
@@ -40,5 +40,11 @@ export class LoginController {
     } else {
       res.status(401).send("Invalid email or password");
     }
+  }
+
+  @get("/logout")
+  getLogout(req: Request, res: Response) {
+    req.session = undefined;
+    res.redirect("/");
   }
 }
